@@ -1,25 +1,25 @@
 {%- comment -%} Renders one paper section; pass papers=site.data.papers.SECTION {%- endcomment -%}
 {%- for p in include.papers -%}
   {%- assign link = p.href -%}
-  {%- if link == blank -%}{%- assign link = p.pdf -%}{%- endif -%}
+  {%- unless link and link != "" -%}{%- assign link = p.pdf -%}{%- endunless -%}
   {%- assign parts = "" | split: "" -%}
-  {%- if p.journalName != blank -%}
-    {%- capture j -%}<em>{{ p.journalName }}</em>{%- if p.journalVol != blank -%}, {{ p.journalVol }}{%- elsif p.year != blank -%} ({{ p.year }}){%- endif -%}{%- endcapture -%}
+  {%- if p.journalName and p.journalName != "" -%}
+    {%- capture j -%}<em>{{ p.journalName }}</em>{%- if p.journalVol and p.journalVol != "" -%}, {{ p.journalVol }}{%- elsif p.year and p.year != "" -%} ({{ p.year }}){%- endif -%}{%- endcapture -%}
     {%- assign parts = parts | push: j -%}
   {%- endif -%}
-  {%- if p.note != blank -%}{%- assign parts = parts | push: p.note -%}{%- endif -%}
-  {%- if p.coauthors != blank -%}{%- assign parts = parts | push: p.coauthors -%}{%- endif -%}
+  {%- if p.note and p.note != "" -%}{%- assign parts = parts | push: p.note -%}{%- endif -%}
+  {%- if p.coauthors and p.coauthors != "" -%}{%- assign parts = parts | push: p.coauthors -%}{%- endif -%}
   {%- assign links = "" | split: "" -%}
-  {%- if p.pdf != blank -%}{%- capture l -%}[<a href="{{ p.pdf | relative_url }}" target="_blank" rel="noopener">PDF</a>]{%- endcapture -%}{%- assign links = links | push: l -%}{%- endif -%}
-  {%- if p.doi != blank -%}{%- capture l -%}[<a href="{{ p.doi }}" target="_blank" rel="noopener">DOI</a>]{%- endcapture -%}{%- assign links = links | push: l -%}{%- endif -%}
+  {%- if p.pdf and p.pdf != "" -%}{%- capture l -%}[<a href="{{ p.pdf | relative_url }}" target="_blank" rel="noopener">PDF</a>]{%- endcapture -%}{%- assign links = links | push: l -%}{%- endif -%}
+  {%- if p.doi and p.doi != "" -%}{%- capture l -%}[<a href="{{ p.doi }}" target="_blank" rel="noopener">DOI</a>]{%- endcapture -%}{%- assign links = links | push: l -%}{%- endif -%}
   {%- if links.size > 0 -%}{%- assign lj = links | join: " " -%}{%- assign parts = parts | push: lj -%}{%- endif %}
 <li>
-  {%- if link != blank -%}
+  {%- if link and link != "" -%}
   <a class="item-title" href="{{ link | relative_url }}" target="_blank" rel="noopener">{{ p.title }}</a>
   {%- else -%}
   <span class="item-title">{{ p.title }}</span>
   {%- endif -%}
   <div class="item-desc">{{ parts | join: ". " }}</div>
-  {%- if p.original != blank -%}<div class="item-original">{{ p.original }}</div>{%- endif -%}
+  {%- if p.original and p.original != "" -%}<div class="item-original">{{ p.original }}</div>{%- endif -%}
 </li>
 {%- endfor %}

@@ -70,7 +70,7 @@ details[open] > summary::after { content: ' \25BE'; }
     <ul class="list" id="news-list">
     {%- for n in site.data.news %}
       <li><span class="news-date">{{ n.date }}</span> <span class="news-text">
-        {%- if n.href != blank -%}
+        {%- if n.href and n.href != "" -%}
           <a href="{{ n.href | relative_url }}"{% if n.href contains "://" %} target="_blank" rel="noopener"{% endif %}>{{ n.text }}</a>
         {%- else -%}
           {{ n.text }}
