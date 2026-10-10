@@ -4,7 +4,7 @@
   {%- unless link and link != "" -%}{%- assign link = p.pdf -%}{%- endunless -%}
   {%- assign parts = "" | split: "" -%}
   {%- if p.journalName and p.journalName != "" -%}
-    {%- capture j -%}<em>{{ p.journalName }}</em>{%- if p.journalVol and p.journalVol != "" -%}, {{ p.journalVol }}{%- elsif p.year and p.year != "" -%} ({{ p.year }}){%- endif -%}{%- endcapture -%}
+    {%- capture j -%}<em>{{ p.journalName }}</em>{%- if p.journalVol and p.journalVol != "" -%}, {{ p.journalVol }}{%- elsif p.year and p.year != "" %} ({{ p.year }}){%- endif -%}{%- endcapture -%}
     {%- assign parts = parts | push: j -%}
   {%- endif -%}
   {%- if p.note and p.note != "" -%}{%- assign parts = parts | push: p.note -%}{%- endif -%}
