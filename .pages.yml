@@ -1,0 +1,311 @@
+# Pages CMS configuration (https://pagescms.org/docs/)
+
+media:
+- name: papers
+  label: 論文PDF
+  input: papers
+  output: /papers
+  extensions:
+  - pdf
+- name: files
+  label: ファイル（CVなど）
+  input: files
+  output: /files
+- name: images
+  label: 画像
+  input: images
+  output: /images
+  extensions:
+  - png
+  - jpg
+  - jpeg
+  - webp
+  - gif
+content:
+- name: news
+  label: News
+  type: file
+  path: _data/news.yml
+  format: yaml
+  list:
+    collapsible:
+      collapsed: true
+      summary: '{date} — {text}'
+  fields:
+  - name: date
+    label: 日付
+    type: string
+    required: true
+    description: '例: September 2026'
+  - name: text
+    label: 本文
+    type: text
+    required: true
+  - name: href
+    label: リンク先URL
+    type: string
+    description: http で始まるリンクは新しいタブで開きます
+- name: papers
+  label: 論文
+  type: group
+  items:
+  - name: refereed
+    label: Refereed Articles
+    type: file
+    path: _data/papers/refereed.yml
+    format: yaml
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title}'
+    fields:
+    - name: title
+      label: タイトル
+      type: string
+      required: true
+    - name: original
+      label: 原題（日本語など）
+      type: string
+      description: 英語タイトルの下に小さく表示されます
+    - name: href
+      label: タイトルのリンク先
+      type: string
+      description: 空欄ならPDFにリンクします
+    - name: journalName
+      label: 雑誌名
+      type: string
+    - name: journalVol
+      label: 巻号・年
+      type: string
+      description: '例: 255, 112571 (2025)'
+    - name: year
+      label: 年
+      type: number
+      description: 巻号が空欄のときだけ「(2021)」のように表示されます
+    - name: note
+      label: 注記
+      type: string
+      description: '例: Job Market Paper / In Japanese / Refereed'
+    - name: coauthors
+      label: 共著者
+      type: string
+      description: '例: Joint with Yasuhiro Doi'
+    - name: pdf
+      label: PDF
+      type: file
+      options:
+        media: papers
+        extensions:
+        - pdf
+    - name: doi
+      label: DOI
+      type: string
+      description: '例: https://doi.org/...'
+  - name: working
+    label: Working Papers
+    type: file
+    path: _data/papers/working.yml
+    format: yaml
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title}'
+    fields:
+    - name: title
+      label: タイトル
+      type: string
+      required: true
+    - name: original
+      label: 原題（日本語など）
+      type: string
+      description: 英語タイトルの下に小さく表示されます
+    - name: href
+      label: タイトルのリンク先
+      type: string
+      description: 空欄ならPDFにリンクします
+    - name: journalName
+      label: 雑誌名
+      type: string
+    - name: journalVol
+      label: 巻号・年
+      type: string
+      description: '例: 255, 112571 (2025)'
+    - name: year
+      label: 年
+      type: number
+      description: 巻号が空欄のときだけ「(2021)」のように表示されます
+    - name: note
+      label: 注記
+      type: string
+      description: '例: Job Market Paper / In Japanese / Refereed'
+    - name: coauthors
+      label: 共著者
+      type: string
+      description: '例: Joint with Yasuhiro Doi'
+    - name: pdf
+      label: PDF
+      type: file
+      options:
+        media: papers
+        extensions:
+        - pdf
+    - name: doi
+      label: DOI
+      type: string
+      description: '例: https://doi.org/...'
+  - name: progress
+    label: Work in Progress
+    type: file
+    path: _data/papers/progress.yml
+    format: yaml
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title}'
+    fields:
+    - name: title
+      label: タイトル
+      type: string
+      required: true
+    - name: original
+      label: 原題（日本語など）
+      type: string
+      description: 英語タイトルの下に小さく表示されます
+    - name: href
+      label: タイトルのリンク先
+      type: string
+      description: 空欄ならPDFにリンクします
+    - name: journalName
+      label: 雑誌名
+      type: string
+    - name: journalVol
+      label: 巻号・年
+      type: string
+      description: '例: 255, 112571 (2025)'
+    - name: year
+      label: 年
+      type: number
+      description: 巻号が空欄のときだけ「(2021)」のように表示されます
+    - name: note
+      label: 注記
+      type: string
+      description: '例: Job Market Paper / In Japanese / Refereed'
+    - name: coauthors
+      label: 共著者
+      type: string
+      description: '例: Joint with Yasuhiro Doi'
+    - name: pdf
+      label: PDF
+      type: file
+      options:
+        media: papers
+        extensions:
+        - pdf
+    - name: doi
+      label: DOI
+      type: string
+      description: '例: https://doi.org/...'
+  - name: other
+    label: Other Working Papers
+    type: file
+    path: _data/papers/other.yml
+    format: yaml
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title}'
+    fields:
+    - name: title
+      label: タイトル
+      type: string
+      required: true
+    - name: original
+      label: 原題（日本語など）
+      type: string
+      description: 英語タイトルの下に小さく表示されます
+    - name: href
+      label: タイトルのリンク先
+      type: string
+      description: 空欄ならPDFにリンクします
+    - name: journalName
+      label: 雑誌名
+      type: string
+    - name: journalVol
+      label: 巻号・年
+      type: string
+      description: '例: 255, 112571 (2025)'
+    - name: year
+      label: 年
+      type: number
+      description: 巻号が空欄のときだけ「(2021)」のように表示されます
+    - name: note
+      label: 注記
+      type: string
+      description: '例: Job Market Paper / In Japanese / Refereed'
+    - name: coauthors
+      label: 共著者
+      type: string
+      description: '例: Joint with Yasuhiro Doi'
+    - name: pdf
+      label: PDF
+      type: file
+      options:
+        media: papers
+        extensions:
+        - pdf
+    - name: doi
+      label: DOI
+      type: string
+      description: '例: https://doi.org/...'
+  - name: japanese
+    label: Publications in Japanese
+    type: file
+    path: _data/papers/japanese.yml
+    format: yaml
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title}'
+    fields:
+    - name: title
+      label: タイトル
+      type: string
+      required: true
+    - name: original
+      label: 原題（日本語など）
+      type: string
+      description: 英語タイトルの下に小さく表示されます
+    - name: href
+      label: タイトルのリンク先
+      type: string
+      description: 空欄ならPDFにリンクします
+    - name: journalName
+      label: 雑誌名
+      type: string
+    - name: journalVol
+      label: 巻号・年
+      type: string
+      description: '例: 255, 112571 (2025)'
+    - name: year
+      label: 年
+      type: number
+      description: 巻号が空欄のときだけ「(2021)」のように表示されます
+    - name: note
+      label: 注記
+      type: string
+      description: '例: Job Market Paper / In Japanese / Refereed'
+    - name: coauthors
+      label: 共著者
+      type: string
+      description: '例: Joint with Yasuhiro Doi'
+    - name: pdf
+      label: PDF
+      type: file
+      options:
+        media: papers
+        extensions:
+        - pdf
+    - name: doi
+      label: DOI
+      type: string
+      description: '例: https://doi.org/...'

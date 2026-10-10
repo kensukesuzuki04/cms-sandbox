@@ -1,0 +1,126 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kensuke Suzuki – Clark University</title>
+<meta name="description" content="Kensuke Suzuki, Assistant Professor of Economics at Clark University. Research in international trade and spatial economics.">
+<link rel="icon" type="image/png" href="{{ '/images/clark-favicon.png' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+<style>
+details > summary {
+  display: block;
+  list-style: none;
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: var(--clark);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin: 1.2rem 0 .3rem;
+  user-select: none;
+}
+details > summary::-webkit-details-marker { display: none; }
+details > summary::after { content: ' \25B8'; font-size: .75em; vertical-align: .05em; }
+details[open] > summary::after { content: ' \25BE'; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__inner">
+    <a class="site-title" href="{{ '/' | relative_url }}">Kensuke Suzuki</a>
+    <nav class="site-nav">
+      <a href="{{ '/files/cv.pdf' | relative_url }}" target="_blank" rel="noopener">CV</a>
+      <a href="{{ '/' | relative_url }}#research">Research</a>
+      <a href="https://kensukesuzuki04.github.io/teaching/">Teaching</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <aside class="sidebar">
+    <img class="avatar" src="{{ '/images/profile.jpg' | relative_url }}" alt="Kensuke Suzuki" onerror="this.style.visibility='hidden'">
+    <div class="name">Kensuke Suzuki</div>
+    <div class="role">Assistant Professor of Economics, Clark University</div>
+    <ul class="links">
+      <li><a href="mailto:KSuzuki@clarku.edu">Email</a></li>
+      <li><a href="{{ '/files/cv.pdf' | relative_url }}" target="_blank" rel="noopener">CV</a></li>
+      <li><a href="https://github.com/kensukesuzuki04" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/kensuke-suzuki-789b34130/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://x.com/kensuzuki_econ" target="_blank" rel="noopener">X (Twitter)</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <h1 class="page__title">Kensuke Suzuki</h1>
+    <p class="page__lead">Assistant Professor of Economics · Clark University</p>
+
+    <h2 class="section">About</h2>
+    <p>I am an Assistant Professor of Economics at <a href="https://www.clarku.edu">Clark University</a>.
+       My research focuses on <strong>international trade and spatial economics</strong>, with recent work on
+       the labor-market and regional implications of foreign employment in Japan.</p>
+    <p style="margin-top:.8rem;">I received my Ph.D. in Economics from the Pennsylvania State University.
+       You can download my <a href="{{ '/files/cv.pdf' | relative_url }}" target="_blank" rel="noopener">CV</a>, and find course materials on my
+       <a href="https://kensukesuzuki04.github.io/teaching/">Teaching page</a>.</p>
+
+    <h2 class="section" id="news">News</h2>
+    <ul class="list" id="news-list">
+    {%- for n in site.data.news %}
+      <li><span class="news-date">{{ n.date }}</span> <span class="news-text">
+        {%- if n.href != blank -%}
+          <a href="{{ n.href | relative_url }}"{% if n.href contains "://" %} target="_blank" rel="noopener"{% endif %}>{{ n.text }}</a>
+        {%- else -%}
+          {{ n.text }}
+        {%- endif -%}
+      </span></li>
+    {%- endfor %}
+    </ul>
+
+    <h2 class="section" id="research">Research</h2>
+
+    <h3 style="font-size:1.05rem;color:var(--clark);text-transform:uppercase;letter-spacing:.06em;margin:1.2rem 0 .3rem;">Refereed Articles</h3>
+    <ul class="list" id="papers-refereed">
+    {% include paper-list.html papers=site.data.papers.refereed %}
+    </ul>
+
+    <h3 style="font-size:1.05rem;color:var(--clark);text-transform:uppercase;letter-spacing:.06em;margin:1.2rem 0 .3rem;">Working Papers</h3>
+    <ul class="list" id="papers-working">
+    {% include paper-list.html papers=site.data.papers.working %}
+    </ul>
+
+    <h3 style="font-size:1.05rem;color:var(--clark);text-transform:uppercase;letter-spacing:.06em;margin:1.2rem 0 .3rem;">Work in Progress</h3>
+    <ul class="list" id="papers-progress">
+    {% include paper-list.html papers=site.data.papers.progress %}
+    </ul>
+
+    <details>
+      <summary>Other Working Papers</summary>
+      <ul class="list" id="papers-other">
+    {% include paper-list.html papers=site.data.papers.other %}
+    </ul>
+    </details>
+
+    <h3 style="font-size:1.05rem;color:var(--clark);text-transform:uppercase;letter-spacing:.06em;margin:1.2rem 0 .3rem;">Publications in Japanese</h3>
+    <ul class="list" id="papers-japanese">
+    {% include paper-list.html papers=site.data.papers.japanese %}
+    </ul>
+
+    <h2 class="section" id="teaching">Teaching</h2>
+    <p>Course materials, slides, syllabi, and data &amp; AI resources are collected on my
+       <a href="https://kensukesuzuki04.github.io/teaching/">Teaching page</a>.</p>
+
+    <h2 class="section" id="contact">Contact</h2>
+    <ul class="list">
+      <li><a href="mailto:KSuzuki@clarku.edu">KSuzuki@clarku.edu</a></li>
+      <li class="muted">Jonas Clark Hall, Room 221 · Department of Economics, Clark University, Worcester, MA</li>
+    </ul>
+  </main>
+</div>
+
+<footer class="site-footer">© 2026 Kensuke Suzuki · Clark University</footer>
+
+</body>
+</html>

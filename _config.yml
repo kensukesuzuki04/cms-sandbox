@@ -1,0 +1,8 @@
+# Jekyll settings for GitHub Pages.
+# baseurl is the sub-path the site is served from ("" for kensukesuzuki04.github.io itself).
+title: Kensuke Suzuki
+url: https://kensukesuzuki04.github.io
+baseurl: /cms-sandbox
+exclude:
+  - files/README.md
+  - papers/README.md
