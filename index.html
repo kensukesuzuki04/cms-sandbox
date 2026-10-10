@@ -68,7 +68,7 @@ details[open] > summary::after { content: ' \25BE'; }
 
     <h2 class="section" id="news">News</h2>
     <ul class="list" id="news-list">
-    {%- for n in site.data.news %}
+    {%- for n in site.data.news.items %}
       <li><span class="news-date">{{ n.date }}</span> <span class="news-text">
         {%- if n.href and n.href != "" -%}
           <a href="{{ n.href | relative_url }}"{% if n.href contains "://" %} target="_blank" rel="noopener"{% endif %}>{{ n.text }}</a>
@@ -83,29 +83,29 @@ details[open] > summary::after { content: ' \25BE'; }
 
     <h3 style="font-size:1.05rem;color:var(--clark);text-transform:uppercase;letter-spacing:.06em;margin:1.2rem 0 .3rem;">Refereed Articles</h3>
     <ul class="list" id="papers-refereed">
-    {% include paper-list.html papers=site.data.papers.refereed %}
+    {% include paper-list.html papers=site.data.papers.refereed.items %}
     </ul>
 
     <h3 style="font-size:1.05rem;color:var(--clark);text-transform:uppercase;letter-spacing:.06em;margin:1.2rem 0 .3rem;">Working Papers</h3>
     <ul class="list" id="papers-working">
-    {% include paper-list.html papers=site.data.papers.working %}
+    {% include paper-list.html papers=site.data.papers.working.items %}
     </ul>
 
     <h3 style="font-size:1.05rem;color:var(--clark);text-transform:uppercase;letter-spacing:.06em;margin:1.2rem 0 .3rem;">Work in Progress</h3>
     <ul class="list" id="papers-progress">
-    {% include paper-list.html papers=site.data.papers.progress %}
+    {% include paper-list.html papers=site.data.papers.progress.items %}
     </ul>
 
     <details>
       <summary>Other Working Papers</summary>
       <ul class="list" id="papers-other">
-    {% include paper-list.html papers=site.data.papers.other %}
+    {% include paper-list.html papers=site.data.papers.other.items %}
     </ul>
     </details>
 
     <h3 style="font-size:1.05rem;color:var(--clark);text-transform:uppercase;letter-spacing:.06em;margin:1.2rem 0 .3rem;">Publications in Japanese</h3>
     <ul class="list" id="papers-japanese">
-    {% include paper-list.html papers=site.data.papers.japanese %}
+    {% include paper-list.html papers=site.data.papers.japanese.items %}
     </ul>
 
     <h2 class="section" id="teaching">Teaching</h2>
